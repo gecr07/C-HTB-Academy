@@ -84,6 +84,136 @@ In C#, case sensitivity is a fundamental aspect of the language syntax. This mea
 
 This feature extends to all areas of the language, including class names, method names, and other identifiers. For example:
 
+### Semicolon
+
+The semicolon (;) is known as a statement terminator in C#. It's employed to signify the end of a specific statement or command in the code. Using the semicolon as a statement terminator is common in many programming languages, including C++, Java, and JavaScript.
+
+### Blocks of code 
+
+Blocks in C# are sections of code enclosed in braces ({ }). They are typically used to group multiple statements together to form a single executable unit, such as the body of a method, loop, or conditional statement.
+
+### comments
+
+Como c ...
+
+![image](https://github.com/gecr07/C-HTB-Academy/assets/63270579/c38a6570-d744-48bb-9cac-5b9e71775785)
+
+### Variables
+
+Se asignan al estilo de C
+
+### Constantes
+
+Ya sabes una vez declarado su valor no se puede cambiar.
+
+```
+const int myConstant = 10;
+```
+
+### Enumeraciones 
+
+Es como en C puedes escojer un tipo de dato pore jemplo de una semana podrias elegir los dias.
+
+```
+public enum Day 
+{
+    Sunday,
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday
+}
+
+```
+Entonces el primer dia seria 0 y asi hasta llegar al sabado de nuevo que seria 6. Ojo tambien se puede poner numeros arbitrarios 
+
+```
+public enum Month : byte
+{
+    January = 1,
+    February = 2,
+    // And so on...
+}
+```
+
+## C# Data types
+
+
+```
+byte aByte = 255; // Range: 0 to 255
+sbyte aSbyte = -128; // Range: -128 to 127
+short aShort = -32768; // Range: -32,768 to 32,767
+ushort aUshort = 65535; // Range: 0 to 65,535
+int anInt = -2147483648; // Range: -2,147,483,648 to 2,147,483,647
+uint aUint = 4294967295; // Range: 0 to 4,294,967,295
+long aLong = -9223372036854775808; // Range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+ulong aUlong = 18446744073709551615; // Range: 0 to 18,446,744,073,709,551,615
+float aFloat = 3.1415927f; // Range: ±1.5 x 10^-45 to ±3.4 x 10^38, Precision: 7 digits
+double aDouble = 3.141592653589793; // Range: ±5.0 x 10^-324 to ±1.7 x 10^308, Precision: 15-16 digits
+decimal aDecimal = 3.14159265358979323846m; // Range: ±1.0 x 10^-28 to ±7.9 x 10^28, Precision: 28-29 digits
+bool aBool = true; // or false
+char aChar = 'C'; // Can be a letter, a number, a symbol, or a special character like a newline (`\n`) or a tab (`\t`)
+string aString = "Hello, World!";
+```
+
+En casos excepcionales, es posible que no conozca el tipo de variable en el momento de la compilación. Para tales casos, C# proporciona un tipo especial llamado var. La varpalabra clave indica al compilador que infiera el tipo de variable a partir de la expresión en el lado derecho de la declaración de inicialización. Luego, el compilador asigna el tipo más apropiado.
+
+```
+var number = 10; // The compiler will infer that 'number' is an integer
+var message = "Hello, World!"; // Here, 'message' is inferred as a string
+
+
+```
+
+Es importante tener en cuenta que varsolo se puede utilizar cuando una variable se declara e inicializa simultáneamente. Una vez que una variable se declara vare inicializa, su tipo no se puede cambiar; permanece fuertemente tipado.
+
+```
+var myVariable = 10;
+myVariable = "Hello"; // This will cause a compile error
+int? nullableInt = null;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

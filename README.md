@@ -589,25 +589,192 @@ goto The goto statement transfers the program control directly to a labelled sta
 
 ```
 
+## Arrays
+
+Se declaran tipo c
+
+```
+int [] array;
+```
+
+Para crear un arreglo ya en memoria usa la palabra new ( nada que no sepas del c)
+
+```
+array = new int[5];
+int[] array = new int[] { 1, 2, 3, 4, 5 };
+```
+Ya sabes podemos declarar arreglos multidimensionales.
+
+```
+matrix = new int[3, 3];
+int[,] matrix = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+```
+
+> 
+El método GetLength(int dimension) se utiliza para obtener la longitud (número de elementos) de una dimensión específica en una matriz multidimensional en C#. Esta función es útil cuando trabajas con matrices que tienen más de una dimensión y deseas conocer la cantidad de elementos en una dimensión específica, ya sea la primera dimensión (índice 0) o la segunda dimensión (índice 1) en una matriz bidimensional, por ejemplo.
+
+```
+int[,] matrix = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+
+// Use the GetLength method to get the number of rows (dimension 0) and columns (dimension 1)
+for (int i = 0; i < matrix.GetLength(0); i++) {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+        // Access each element of the array using the indices
+        Console.Write(matrix[i, j] + " ");
+    }
+    Console.WriteLine(); // Print a newline at the end of each row
+}
+
+```
+
+Entonces la primera dimension es 0 y la segunda es 1 por eso imprime bien todo
+
+### The array class
+
+part of the System namespace. It provides various properties and methods like Length, Sort(), Reverse(), and many more that allow you to manipulate arrays.
+
+```
+int[] numbers = {8, 2, 6, 3, 1};
+Array.Sort(numbers);
+int[] numbers = {1, 2, 3};
+Array.Reverse(numbers);
+int[] numbers = {1, 2, 3};
+int index = Array.IndexOf(numbers, 2);
+//The variable index now holds the value 1, which is the index of number 2 in the array.
 
 
+int[] numbers = {1, 2, 3};
+Array.Clear(numbers, 0, numbers.Length);
+//Now all elements in our array are set to zero: {0, 0, 0}.
+
+```
+
+## Strings
+
+La principal diferenciación entre una cadena y una matriz de caracteres es que las cadenas en C# son inmutables, lo que significa que una vez creadas, no se pueden cambiar. Cualquier operación que parezca alterar la cadena en realidad crea una nueva cadena y descarta la anterior. Este diseño mejora la seguridad y mejora el rendimiento para texto estático o que rara vez cambia.
+
+Por otro lado, las matrices de caracteres son mutables y los elementos individuales se pueden cambiar libremente. Esta mutabilidad tiene el costo de no tener métodos de comparación y manipulación de texto integrados, como lo hacen las cadenas.
+
+```
+//hay muchas operaciones que puede realizar en ella. La Lengthpropiedad, por ejemplo, devuelve el número de caracteres de la cadena.
+string welcomeMessage = "Welcome to Academy!";
+Console.WriteLine(welcomeMessage.Length); // Outputs: 19
+// CONCATENACION
+
+string firstString = "Welcome ";
+string secondString = "to Academy!";
+string concatenatedString = firstString + secondString;
+Console.WriteLine(concatenatedString); // Outputs: "Welcome to Academy!"
+
+```
+
+Cuando se trata de manipular la estructura de cadenas, la Stringclase proporciona los métodos ToLowery ToUpper. ToLowerconvierte todos los caracteres de una cadena a minúsculas, mientras que ToUpperlos convierte todos a mayúsculas.
+
+```
+string lowerCaseString = welcomeMessage.ToLower();
+Console.WriteLine(lowerCaseString); // Outputs: "welcome to academy!"
+
+string upperCaseString = welcomeMessage.ToUpper();
+Console.WriteLine(upperCaseString); // Outputs: "WELCOME TO ACADEMY!"
 
 
+// También existen métodos para comprobar si una cadena comienza o termina con una subcadena específica. Estos son los métodos StartsWithy EndsWith, respectivamente.
+
+bool startsWithWelcome = welcomeMessage.StartsWith("Welcome");
+Console.WriteLine(startsWithWelcome); // Outputs: True
+
+bool endsWithProgramming = welcomeMessage.EndsWith("Academy!");
+Console.WriteLine(endsWithProgramming); // Outputs: True
+
+```
+
+Un requisito común en programación es determinar si existe una subcadena específica dentro de una cadena más grande. Esto se puede lograr con el Containsmétodo.
+
+```
+bool containsCsharp = welcomeMessage.Contains("C#");
+Console.WriteLine(containsCsharp); // Outputs: False
+```
+
+A veces, es posible que necesite reemplazar todas las apariciones de una subcadena dentro de una cadena con otra subcadena. El Replacemétodo te permite hacer esto.
+
+```
+string replacedMessage = welcomeMessage.Replace("Academy", "HTB Academy");
+Console.WriteLine(replacedMessage); // Outputs: "Welcome to HTB Academy!"
+
+```
+
+Puede utilizar el Equalsmétodo o el ==operador al comparar dos cadenas para determinar la igualdad. Ambos realizan una comparación que distingue entre mayúsculas y minúsculas de forma predeterminada.
+
+```
+string str1 = "Welcome";
+string str2 = "welcome";
+bool areEqual = str1.Equals(str2);
+Console.WriteLine(areEqual); // Outputs: False
+```
+
+## Interpolacion de cadenas (como en bash ${var})
+
+Para crear una cadena interpolada en C#, anteponga la cadena con un $símbolo y escriba cualquier variable o expresión que desee interpolar entre llaves {}. Cuando se procesa la cadena, estas expresiones se reemplazan por sus representaciones de cadena evaluadas.
+
+```
+string name = "Alice";
+string greeting = $"Hello, {name}!";
+Console.WriteLine(greeting); // Outputs: "Hello, Alice!"
+```
+
+### Trim
+
+Otra operación importante de la cuerda es el recorte, que se realiza mediante el Trimmétodo. Esto se usa comúnmente para eliminar los espacios en blanco iniciales y finales de una cadena.
+
+```
+string paddedString = "    Extra spaces here    ";
+string trimmedString = paddedString.Trim();
+Console.WriteLine(trimmedString); // Outputs: "Extra spaces here"
+```
+
+### Substring 
+
+Extrae una parte de la cadena.
+
+```
+string fullString = "Hello, World!";
+string partialString = fullString.Substring(7, 5); // empiza desde el 0
+Console.WriteLine(partialString); // Outputs: "World"
+```
 
 
+### Split 
+
+Además, utilizando el Splitmétodo, las cadenas se pueden dividir en matrices de subcadenas basadas en delimitadores. Esto es especialmente útil al analizar entradas o manejar datos que vienen en forma de cadena.
 
 
+```
+string sentence = "This is a sentence.";
+string[] words = sentence.Split(' ');
+foreach (string word in words) // Mira esta sintaxis de powershell al parecer
+{
+    Console.WriteLine(word);
+}
+// Outputs: 
+// "This"
+// "is"
+// "a"
+// "sentence."
+
+```
+
+![image](https://github.com/gecr07/C-HTB-Academy/assets/63270579/50ef0417-67ae-4eda-b212-4bdbf8ee433a)
 
 
+### Join 
 
 
-
-
-
-
-
-
-
+```
+string[] words = { "This", "is", "a", "sentence" };
+string sentence = string.Join(" ", words);
+Console.WriteLine(sentence); // Outputs: "This is a sentence"
+```
 
 
 

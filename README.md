@@ -1932,7 +1932,53 @@ class Program
 }
 ```
 
+El skill assessment te da una wordlist y tienes que hacerle fuzzing a una URL se programam
 
+
+```C#
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Assessment;
+
+class Program
+{
+    static readonly HttpClient client = new HttpClient();
+    
+    static async Task Main()
+    {
+
+        Words var = new Words();
+        HashSet<string> namesHashSet = var.GetWordList();
+
+        foreach (string name in namesHashSet)
+        {
+            //Console.WriteLine(name);
+            try
+            {
+                string url = "http://10.129.205.211/";
+                string url2 = name;
+                string url3 = url + url2 + "/flag.txt";
+                Console.WriteLine(url3);
+                HttpResponseMessage response = await client.GetAsync(url3);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(responseBody);
+                Console.WriteLine(name + "---------------------------");
+
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Exception Caught!");
+                Console.WriteLine($"Message: {e.Message}");
+            }
+
+        }
+
+    }
+}
+
+```
 
 
 
